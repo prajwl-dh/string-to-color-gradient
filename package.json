@@ -1,6 +1,6 @@
 {
   "name": "string-to-color-gradient",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -36,6 +36,7 @@
     "url": "https://github.com/prajwl-dh/string-to-color-gradient"
   },
   "peerDependencies": {
+    "crypto-js": "^4.2.0",
     "tinycolor2": "^1.6.0"
   },
   "type": "module",
@@ -46,6 +47,7 @@
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@types/crypto-js": "^4.2.2",
     "@types/tinycolor2": "^1.4.6",
     "eslint": "^9.20.1",
     "rollup": "^4.34.6",

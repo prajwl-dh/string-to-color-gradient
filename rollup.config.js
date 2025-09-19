@@ -15,5 +15,5 @@ export default {
     },
   ],
   plugins: [typescript(), resolve(), commonjs()],
-  external: ['tinycolor2'],
+  external: ['tinycolor2, crypto-js'],
 };
