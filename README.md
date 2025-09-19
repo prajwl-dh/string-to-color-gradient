@@ -16,13 +16,13 @@ Turn names, emails, or any string into beautiful, deterministic color values tha
 ## 📦 Installation
 
 ```bash
-npm install string-to-gradient
+npm install string-to-color-gradient
 ```
 
 or with Yarn:
 
 ```bash
-yarn add string-to-gradient
+yarn add string-to-color-gradient
 ```
 
 ## 🚀 Quick Start
@@ -32,7 +32,7 @@ import {
   stringToColor,
   stringToGradient,
   stringToCssGradient,
-} from 'string-to-gradient';
+} from 'string-to-color-gradient';
 
 const color = stringToColor('hello world');
 // => "#d87c3a"
