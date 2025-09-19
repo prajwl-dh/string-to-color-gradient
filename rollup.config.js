@@ -15,4 +15,5 @@ export default {
     },
   ],
   plugins: [typescript(), resolve(), commonjs()],
+  external: ['tinycolor2'],
 };
