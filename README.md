@@ -1,5 +1,12 @@
 # 🎨 string-to-color-gradient
 
+### **[Live Interactive Demo - Click Here](https://stackblitz.com/edit/vitejs-vite-ljuk5lkm?file=src%2FApp.tsx)**
+
+<p align="center">
+  <img src="https://github.com/prajwl-dh/string-to-color-gradient/blob/main/Str2HexDemo.gif?raw=true" alt="Demo 1" width="45%" />
+  <img src="https://github.com/prajwl-dh/string-to-color-gradient/blob/main/Str2CssGradDemo.gif?raw=true" alt="Demo 2" width="45%" />
+</p>
+
 A lightweight npm library to convert any string into consistent **hex colors** and **CSS gradients** — perfect for avatars, tags, themes, blog cards, and visual identifiers.
 
 Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.
