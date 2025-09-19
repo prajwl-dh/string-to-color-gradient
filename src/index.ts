@@ -11,7 +11,7 @@ import { Brightness, GradientOptions } from './model/model';
  */
 function hashStringToInt(str: string): number {
   const hash = MD5(str).toString();
-  return parseInt(hash.slice(0, 8), 16);
+  return parseInt(hash.slice(0, 12), 16);
 }
 
 /**
@@ -53,7 +53,7 @@ function getSaturation(brightness: Brightness = 'normal'): number {
  */
 function getAngleFromString(str: string): number {
   const hash = SHA1(str).toString();
-  const angleInt = parseInt(hash.slice(0, 4), 16);
+  const angleInt = parseInt(hash.slice(0, 6), 16);
   return angleInt % 360;
 }
 
@@ -90,8 +90,14 @@ export function stringToGradient(
   const { brightness = 'normal' } = options;
 
   const hash = SHA256(str).toString();
-  const hue1 = parseInt(hash.slice(0, 6), 16) % 360;
-  const hue2 = parseInt(hash.slice(6, 12), 16) % 360;
+  const hue1 = parseInt(hash.slice(0, 8), 16) % 360;
+  let hue2 = parseInt(hash.slice(8, 16), 16) % 360;
+
+  // Ensure hue2 is sufficiently different from hue1
+  const MIN_HUE_DIFF = 30;
+  if (Math.abs(hue1 - hue2) < MIN_HUE_DIFF) {
+    hue2 = (hue2 + MIN_HUE_DIFF) % 360;
+  }
 
   const saturation = getSaturation(brightness);
   const lightness = getLightness(brightness);
