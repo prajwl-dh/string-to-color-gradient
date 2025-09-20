@@ -1,6 +1,4 @@
-import MD5 from 'crypto-js/md5';
-import SHA1 from 'crypto-js/sha1';
-import SHA256 from 'crypto-js/sha256';
+import CryptoJS from 'crypto-js';
 import tinycolor from 'tinycolor2';
 import { Brightness, GradientOptions } from './model/model';
 
@@ -10,7 +8,7 @@ import { Brightness, GradientOptions } from './model/model';
  * @returns A 32-bit integer derived from the string hash
  */
 function hashStringToInt(str: string): number {
-  const hash = MD5(str).toString();
+  const hash = CryptoJS.MD5(str).toString();
   return parseInt(hash.slice(0, 12), 16);
 }
 
@@ -52,7 +50,7 @@ function getSaturation(brightness: Brightness = 'normal'): number {
  * @returns Angle between 0–359 degrees
  */
 function getAngleFromString(str: string): number {
-  const hash = SHA1(str).toString();
+  const hash = CryptoJS.SHA1(str).toString();
   const angleInt = parseInt(hash.slice(0, 6), 16);
   return angleInt % 360;
 }
@@ -89,7 +87,7 @@ export function stringToGradient(
 ): [string, string] {
   const { brightness = 'normal' } = options;
 
-  const hash = SHA256(str).toString();
+  const hash = CryptoJS.SHA256(str).toString();
   const hue1 = parseInt(hash.slice(0, 8), 16) % 360;
   let hue2 = parseInt(hash.slice(8, 16), 16) % 360;
 
