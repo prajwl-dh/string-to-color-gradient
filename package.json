@@ -1,6 +1,6 @@
 {
   "name": "string-to-color-gradient",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight npm library to convert any string into consistent hex colors and CSS gradients — perfect for avatars, tags, themes, blog cards, and visual identifiers. Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
