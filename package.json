@@ -1,6 +1,6 @@
 {
   "name": "string-to-color-gradient",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A lightweight npm library to convert any string into consistent hex colors and CSS gradients — perfect for avatars, tags, themes, blog cards, and visual identifiers. Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -11,15 +11,22 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.c.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "scripts": {
-    "build": "npm run clean && tsc && rollup -c",
     "clean": "rm -rf dist",
+    "build:types": "tsc",
+    "build:bundle": "rollup -c",
+    "build:cts": "cp dist/index.d.ts dist/index.c.cts",
+    "build": "npm run clean && npm run build:types && npm run build:bundle && npm run build:cts",
     "publish": "npm run build && npm publish"
   },
   "author": "Prajwal Dhungana",
