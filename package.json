@@ -1,21 +1,33 @@
 {
   "name": "string-to-color-gradient",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A lightweight npm library to convert any string into consistent hex colors and CSS gradients — perfect for avatars, tags, themes, blog cards, and visual identifiers. Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.",
+  "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     }
   },
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc && rollup -c",
     "clean": "rm -rf dist",
     "publish": "npm run build && npm publish"
+  },
+  "author": "Prajwal Dhungana",
+  "license": "MIT",
+  "homepage": "https://github.com/prajwl-dh/string-to-color-gradient",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prajwl-dh/string-to-color-gradient"
   },
   "keywords": [
     "string-to-color",
@@ -35,21 +47,10 @@
     "colour",
     "converter"
   ],
-  "author": "Prajwal Dhungana",
-  "license": "MIT",
-  "homepage": "https://github.com/prajwl-dh/string-to-color-gradient",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/prajwl-dh/string-to-color-gradient"
-  },
   "dependencies": {
     "crypto-js": "^4.2.0",
     "tinycolor2": "^1.6.0"
   },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
