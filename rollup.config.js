@@ -6,7 +6,7 @@ export default {
   input: 'src/index.ts', // TypeScript entry point
   output: [
     {
-      file: 'dist/index.js', // CommonJS format
+      file: 'dist/index.cjs', // CommonJS format
       format: 'cjs',
     },
     {
