@@ -1,6 +1,6 @@
 {
   "name": "string-to-color-gradient",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A lightweight npm library to convert any string into consistent hex colors and CSS gradients — perfect for avatars, tags, themes, blog cards, and visual identifiers. Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -11,22 +11,15 @@
   ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.c.cts",
-        "default": "./dist/index.cjs"
-      }
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build:types": "tsc",
-    "build:bundle": "rollup -c",
-    "build:cts": "cp dist/index.d.ts dist/index.c.cts",
-    "build": "npm run clean && npm run build:types && npm run build:bundle && npm run build:cts",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
     "publish": "npm run build && npm publish"
   },
   "author": "Prajwal Dhungana",
@@ -59,15 +52,10 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-typescript": "^12.1.2",
     "@types/crypto-js": "^4.2.2",
     "@types/tinycolor2": "^1.4.6",
-    "eslint": "^9.20.1",
-    "rollup": "^4.34.6",
-    "ts-node": "^10.9.2",
-    "tslib": "^2.8.1",
-    "typescript": "^5.7.3"
+    "bumpp": "^10.3.1",
+    "tsdown": "^0.15.6",
+    "typescript": "^5.9.3"
   }
 }
