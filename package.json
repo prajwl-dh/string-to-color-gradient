@@ -1,6 +1,6 @@
 {
   "name": "string-to-color-gradient",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A lightweight npm library to convert any string into consistent hex colors and CSS gradients — perfect for avatars, tags, themes, blog cards, and visual identifiers. Turn names, emails, or any string into beautiful, deterministic color values that stay the same every time.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -16,8 +16,8 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsdown",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsdown",
     "dev": "tsdown --watch",
     "typecheck": "tsc --noEmit",
     "publish": "npm run build && npm publish"
@@ -55,6 +55,7 @@
     "@types/crypto-js": "^4.2.2",
     "@types/tinycolor2": "^1.4.6",
     "bumpp": "^10.3.1",
+    "rimraf": "^6.0.1",
     "tsdown": "^0.15.6",
     "typescript": "^5.9.3"
   }
