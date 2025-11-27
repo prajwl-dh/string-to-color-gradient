@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   outDir: 'dist',
   clean: true,
-  external: ['tinycolor2', 'crypto-js'],
+  external: ['tinycolor2'],
 });

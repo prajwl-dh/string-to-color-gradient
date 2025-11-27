@@ -1,4 +1,4 @@
-import CryptoJS from 'crypto-js';
+
 import tinycolor from 'tinycolor2';
 import { Brightness, GradientOptions } from './model/model';
 
@@ -7,9 +7,27 @@ import { Brightness, GradientOptions } from './model/model';
  * @param str - Input string
  * @returns A 32-bit integer derived from the string hash
  */
+/**
+ * FNV-1a hashing algorithm (32-bit).
+ * @param str - Input string
+ * @returns A 32-bit integer hash
+ */
+function fnv1a(str: string): number {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return hash >>> 0; // Ensure unsigned 32-bit integer
+}
+
+/**
+ * Hashes a string to a 32-bit integer using FNV-1a.
+ * @param str - Input string
+ * @returns A 32-bit integer derived from the string hash
+ */
 function hashStringToInt(str: string): number {
-  const hash = CryptoJS.MD5(str).toString();
-  return parseInt(hash.slice(0, 12), 16);
+  return fnv1a(str);
 }
 
 /**
@@ -49,10 +67,14 @@ function getSaturation(brightness: Brightness = 'normal'): number {
  * @param str - Input string
  * @returns Angle between 0–359 degrees
  */
+/**
+ * Generates a consistent gradient angle from a string using FNV-1a.
+ * @param str - Input string
+ * @returns Angle between 0–359 degrees
+ */
 function getAngleFromString(str: string): number {
-  const hash = CryptoJS.SHA1(str).toString();
-  const angleInt = parseInt(hash.slice(0, 6), 16);
-  return angleInt % 360;
+  const hash = fnv1a(str + 'angle');
+  return hash % 360;
 }
 
 /**
@@ -87,9 +109,10 @@ export function stringToGradient(
 ): [string, string] {
   const { brightness = 'normal' } = options;
 
-  const hash = CryptoJS.SHA256(str).toString();
-  const hue1 = parseInt(hash.slice(0, 8), 16) % 360;
-  let hue2 = parseInt(hash.slice(8, 16), 16) % 360;
+  const hash1 = fnv1a(str + 'color1');
+  const hash2 = fnv1a(str + 'color2');
+  const hue1 = hash1 % 360;
+  let hue2 = hash2 % 360;
 
   // Ensure hue2 is sufficiently different from hue1
   const MIN_HUE_DIFF = 30;
